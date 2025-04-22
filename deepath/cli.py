@@ -1,5 +1,5 @@
 import argparse
-from .resolver import get_path
+from .resolver import deepath
 
 def main():
     parser = argparse.ArgumentParser(description="Resolve paths reliably across environments.")
@@ -8,7 +8,7 @@ def main():
     args = parser.parse_args()
 
     try:
-        resolved = get_path(args.path, root=args.root)
+        resolved = deepath(args.path, root=args.root)
         print(resolved)
     except FileNotFoundError as e:
         print(e)

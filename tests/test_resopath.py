@@ -1,5 +1,5 @@
 import os
-from resopath.resolver import get_path
+from deepath.resolver import get_path
 
 def test_existing_path(tmp_path):
     f = tmp_path / "test.txt"
