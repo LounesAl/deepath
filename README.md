@@ -1,12 +1,12 @@
-# 📦 resopath
+# 📦 deepath
 
-**resopath** is a lightweight Python library that helps you reliably resolve file paths in any environment — from development to PyInstaller-frozen applications.
+**deepath** is a lightweight Python library that helps you reliably resolve file paths in any environment — from development to PyInstaller-frozen applications.
 
-No more `"file not found"` errors when your app is bundled or run from a different working directory. `resopath` makes path handling robust and environment-aware.
+No more `"file not found"` errors when your app is bundled or run from a different working directory. `deepath` makes path handling robust and environment-aware.
 
 ---
 
-## 🔧 Why resopath?
+## 🔧 Why deepath?
 
 When you're building:
 
@@ -16,12 +16,12 @@ When you're building:
 
 …resolving the *correct* path to your files becomes tricky.
 
-**resopath** simplifies this — with one call that just works:
+**deepath** simplifies this — with one call that just works:
 
 ```python
-import resopath as rp
+from deepath import deepath
 
-path = rp("assets/icon.png")
+path = deepath("assets/icon.png")
 ```
 
 ---
@@ -32,14 +32,13 @@ path = rp("assets/icon.png")
 - 🧪 **Dev-friendly**: detects project root via `.env`, `.git`, or `pyproject.toml`
 - 🔁 **Custom root override** if needed
 - 💥 **Descriptive errors** when a path doesn’t exist
-- 🧼 Importable as `rp` and callable directly: `rp("file.png")`
 
 ---
 
 ## 🚀 Installation
 
 ```bash
-pip install resopath
+pip install deepath
 ```
 
 ---
@@ -47,13 +46,10 @@ pip install resopath
 ## 🛠️ Usage
 
 ```python
-import resopath as rp
+from deepath import deepath
 
 # Resolves path relative to the project root or frozen env
-icon = rp("assets/logo.svg")
-
-# Or override the root explicitly
-cfg = rp("config/settings.yaml", root="src")
+icon = deepath("assets/logo.svg")
 ```
 
 ---
@@ -63,7 +59,7 @@ cfg = rp("config/settings.yaml", root="src")
 You can also use it in your terminal:
 
 ```bash
-python -m resopath assets/logo.svg
+python -m deepath assets/logo.svg
 ```
 
 ---
