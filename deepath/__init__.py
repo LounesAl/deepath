@@ -1,6 +1,4 @@
 from .resolver import deepath
+from .env import set_project_markers
 
-def __call__(*args, **kwargs):
-    return deepath(*args, **kwargs)
-
-__version__ = "0.1.0"
+__all__ = ["deepath", "set_project_markers"]
