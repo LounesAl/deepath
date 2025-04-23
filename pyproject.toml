@@ -1,6 +1,6 @@
 [project]
 name = "deepath"
-version = "0.1.2"
+version = "0.1.3"
 description = "Reliable path resolution for Python apps, even in frozen environments like PyInstaller."
 authors = [{name = "Lounes ALLIOUI", email = "la.lounas.allioui.pro@gmail.com"}]
 readme = "README.md"
