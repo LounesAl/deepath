@@ -1,80 +1,46 @@
-# 📦 deepath
+# deepath
 
-**deepath** is a lightweight Python library that helps you reliably resolve file paths in any environment — from development to PyInstaller-frozen applications.
+**deepath** is a small Python utility that reliably resolves absolute paths to resource files in both development and frozen (PyInstaller) environments.
 
-No more `"file not found"` errors when your app is bundled or run from a different working directory. `deepath` makes path handling robust and environment-aware.
+## 🚀 Why deepath?
 
----
+- Handles PyInstaller's `_MEIPASS` temp dirs (onefile/onedir)
+- Works with virtualenvs and CLI tools
+- Auto-detects project root using markers like `pyproject.toml`, `.git`, or `.env`
+- Customizable via code or environment variables
 
-## 🔧 Why deepath?
-
-When you're building:
-
-- ✅ Command-line tools
-- ✅ Desktop apps with PyInstaller, cx_Freeze, Nuitka, Briefcase...
-- ✅ Python packages that need to load files (e.g. configs, models, images)
-
-…resolving the *correct* path to your files becomes tricky.
-
-**deepath** simplifies this — with one call that just works:
+## 🧩 Usage
 
 ```python
 from deepath import deepath
 
-path = deepath("assets/icon.png")
+path = deepath("assets/image.png")
 ```
 
----
+## 🔧 CLI
 
-## 💡 Features
+```bash
+deepath assets/image.png
+```
 
-- 📦 **Handles frozen apps** (`sys._MEIPASS` detection for PyInstaller)
-- 🧪 **Dev-friendly**: detects project root via `.env`, `.git`, or `pyproject.toml`
-- 🔁 **Custom root override** if needed
-- 💥 **Descriptive errors** when a path doesn’t exist
+## ⚙️ Custom Project Markers
 
----
+In Python:
 
-## 🚀 Installation
+```python
+from deepath.env import set_project_markers
+
+set_project_markers([".myroot", "setup.cfg"])
+```
+
+Or with an environment variable:
+
+```bash
+export DEEPATH_MARKERS=".myroot,.customflag"
+```
+
+## ✅ Installation
 
 ```bash
 pip install deepath
 ```
-
----
-
-## 🛠️ Usage
-
-```python
-from deepath import deepath
-
-# Resolves path relative to the project root or frozen env
-icon = deepath("assets/logo.svg")
-```
-
----
-
-## 🧪 CLI usage
-
-You can also use it in your terminal:
-
-```bash
-python -m deepath assets/logo.svg
-```
-
----
-
-## 🧩 Supported Environments
-
-- PyInstaller
-- cx_Freeze
-- Nuitka
-- Dev mode
-- CLI
-- Python packages
-
----
-
-## 📚 License
-
-MIT License © 2025 Lounes ALLIOUI
